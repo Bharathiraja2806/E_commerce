@@ -55,7 +55,7 @@ ROOT_URLCONF = 'E_commercepro.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'shopkart',
         'HOST': 'localhost',
         'USER' : 'root',
-        'PASSWORD' : 'Mech@4005',
+        'PASSWORD' : 'isss@123',
         'PORT' : '3306'
     }
 }
