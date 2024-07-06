@@ -74,13 +74,24 @@ WSGI_APPLICATION = 'E_commercepro.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'shopkart',
+#         'HOST': 'localhost',
+#         'USER' : 'root',
+#         'PASSWORD' : 'isss@123',
+#         'PORT' : '3306'
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'shopkart',
         'HOST': 'localhost',
         'USER' : 'root',
-        'PASSWORD' : 'isss@123',
+        'PASSWORD' : 'Mech@4005',
         'PORT' : '3306'
     }
 }
