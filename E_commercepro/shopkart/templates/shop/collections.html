@@ -1,0 +1,17 @@
+{% extends 'shop/layouts/main.html' %} 
+{% block title %} 
+SHOPKART | ONLINE SHOPPING
+{% endblock title %}
+{% block content %}
+  <div class="container">
+<div class="row" style="margin-top: 70px;">
+    <div class="col-12">
+        <h1>COLLECTIONS</h1>
+        {%for i in category%}
+        {{ i.name }}
+        {%endfor%}
+    </div>
+</div>
+</div>
+{% endblock content %}
+
