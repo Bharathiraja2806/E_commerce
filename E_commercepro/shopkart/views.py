@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import *
 from django.contrib import messages
+from django.http import HttpResponse
 
 def home(request):
     return render(request, 'shop/index.html')
@@ -20,3 +21,14 @@ def collectionsview(request, name):
         messages.warning(request, "NO Such Products Found")
         return redirect('collections')
 
+def product_details(request, cname,pname):
+    if (category.objects.filter(name = cname, status = 0)):
+       if (Product.objects.filter(name = pname, status = 0)):
+           products = Product.objects.filter(name = pname, status = 0).first()
+           return render(request, 'shop/products/product_details.html',{"products":products})
+       else:
+           messages.error(request,"NO such product found")
+           return redirect('collections')
+    else:
+        messages.error(request,"NO such category found")
+        return redirect('collections')    
