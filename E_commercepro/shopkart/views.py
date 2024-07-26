@@ -2,12 +2,24 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.contrib import messages
 from django.http import HttpResponse
+from shopkart.form import CustomUserForm
 
 def home(request):
-    return render(request, 'shop/index.html')
+    products = Product.objects.filter(trending=1)
+    return render(request, 'shop/index.html',{'products':products})
+
+def login(request):
+    return render(request, 'shop/login.html')
 
 def register(request):
-    return render(request, 'shop/register.html')
+    form = CustomUserForm()
+    if request.method == 'POST':
+        form = CustomUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Registeration success you can login now...!")
+            return redirect('/login')
+    return render(request, 'shop/register.html', {'form':form})
 
 def collections(request):
     Category = category.objects.filter(status=0)    
