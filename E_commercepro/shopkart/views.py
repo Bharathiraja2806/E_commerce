@@ -3,13 +3,34 @@ from .models import *
 from django.contrib import messages
 from django.http import HttpResponse
 from shopkart.form import CustomUserForm
+from django.contrib.auth import authenticate , login, logout
 
 def home(request):
     products = Product.objects.filter(trending=1)
     return render(request, 'shop/index.html',{'products':products})
 
-def login(request):
-    return render(request, 'shop/login.html')
+def logout_page(request):
+    if request.user.is_authenticated:
+        logout(request)
+        messages.success(request,"Logged out successfully")
+    return redirect('/')
+
+def login_page(request):
+    if request.user.is_authenticated:
+        return redirect("/")
+    else:
+        if request.method == 'POST':
+            name=request.POST.get('username')
+            pwd=request.POST.get('password')
+            user = authenticate(request, username = name, password = pwd)
+            if user is not None:
+                login(request, user)
+                messages.success(request, "Logged in successfully")
+                return redirect("/")
+            else:
+                messages.error(request,"Invalid username or password")
+                return redirect("/login")
+        return render(request, 'shop/login.html')
 
 def register(request):
     form = CustomUserForm()

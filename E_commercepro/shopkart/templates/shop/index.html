@@ -1,34 +1,39 @@
 {% extends 'shop/layouts/main.html' %} 
+
 {% block title %}
-REGISTERATION | SHOPKART
+REGISTRATION | SHOPKART
 {% endblock title %} 
+
 {% block content %}
 {% include 'shop/inc/slider.html'%}
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{%static 'css/style.css'%}">
+</head>
 <div class="container">
-<div class="row" style="margin-top: 70px;">
-    <div class="col-12">
-           <h4 class="mb-3"> Latest Offers</h4>
-            <hr style="border-color:#b8bfc2">
+    <div class="row mt-5">
+        <div class="col-12 text-center mb-4">
+            <h4 class="mb-3">Latest Offers</h4>
+            <hr class="mx-auto custom-divider">
         </div>
-        {% for item in products%}
-        <div class="col-md-4 col-lg-3">
-  <div class="card my-3">
-    <img src="{{ item.product_image.url }}" style="width: 100%; height: 200px; object-fit: cover;" alt="Categories" />
-    <a href="{% url 'product_details' item.category.name item.name%}">    
-    <div class="card-body">
-      <h5 class="card-title text-primary">{{ item.name }}</h5>
-      <p class="card-text">
-        <span class="float-start old_price"><s>Rs.{{ item.original_price | stringformat:'d' }}</s></span>
-        <span class="float-end new_price">Rs.{{ item.selling_price | stringformat:'d'}}</span>
-    </p>
-      <!-- <a href="" class="btn btn-primary btn-sm">View Details</a> -->
-    </div>
-    </a>
-  </div>
-</div>
-
+        {% for item in products %}
+        <div class="col-md-4 col-lg-3 mb-4">
+            <div class="card product-card shadow">
+                <div class="card-image-container">
+                    <img src="{{ item.product_image.url }}" class="card-img-top" alt="{{ item.name }}">
+                </div>
+                <a href="{% url 'product_details' item.category.name item.name %}" class="stretched-link text-decoration-none">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">{{ item.name }}</h5>
+                        <p class="card-text">
+                            <span class="float-start text-muted"><s>Rs.{{ item.original_price | stringformat:'d' }}</s></span>
+                            <span class="float-end text-success">Rs.{{ item.selling_price | stringformat:'d' }}</span>
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
         {% endfor %}
     </div>
-
 </div>
 {% endblock content %}

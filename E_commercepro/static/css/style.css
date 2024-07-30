@@ -20,8 +20,8 @@ a {
 }
 
 .carousel-inner {
-    height: 300px; 
-  }
+  height: 300px;
+}
 
 .old_price {
   font-weight: bold;
@@ -37,11 +37,11 @@ a {
   margin-bottom: 5px;
 }
 
-.pic-box{
+.pic-box {
   position: relative;
 }
 
-.hot{
+.hot {
   background-color: orangered;
   color: white;
   font-weight: bold;
@@ -50,8 +50,102 @@ a {
   display: inline;
   border-radius: 5px;
   padding: 5px;
-  position:absolute;
+  position: absolute;
   top: 0;
   right: 12px;
   z-index: 10;
+}
+
+.product-card {
+  border: none;
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-image-container {
+  overflow: hidden;
+}
+
+.card-img-top {
+  height: 200px;
+  /* object-fit: cover; */
+  transition: transform 0.4s ease-in-out;
+}
+
+.product-card:hover .card-img-top {
+  transform: scale(1.1);
+}
+
+.card-body {
+  padding: 15px;
+  transition: background-color 0.4s ease-in-out;
+}
+
+.product-card:hover .card-body {
+  background-color: #f8f9fa;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: color 0.4s ease-in-out;
+}
+
+.product-card:hover .card-title {
+  color: #007bff;
+}
+
+.card-text {
+  font-size: 0.9rem;
+}
+
+.text-primary {
+  color: #007bff !important;
+}
+
+.text-success {
+  color: #28a745 !important;
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+hr.custom-divider {
+  border-top: 2px solid #b8bfc2;
+  width: 50px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.product-card {
+  animation: fadeInUp 0.7s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.container {
+  animation: fadeIn 1s ease-in-out;
 }
